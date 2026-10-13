@@ -1,6 +1,6 @@
 USE DataCO
 GO
-/*    
+   
 CREATE TABLE DimCustomer
 (
     Customer_Id INT PRIMARY KEY,
@@ -187,8 +187,6 @@ SELECT
     DATENAME(WEEKDAY, Fecha) AS Day_Name
 FROM Fechas_Consolidadas;
 GO
-
-*/
 
 CREATE TABLE FactSales 
 (
