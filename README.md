@@ -197,7 +197,7 @@ GO
 
 **Resultado:**
 
-<img width="795" height="189" alt="image" src="https://github.com/user-attachments/assets/2dc86464-70fe-4d6c-b2b0-0f136e47069d" />
+  <img width="795" height="189" alt="image" src="https://github.com/user-attachments/assets/2dc86464-70fe-4d6c-b2b0-0f136e47069d" />
 
 
 **Hallazgos:**
@@ -256,7 +256,7 @@ GO
 ```
 
 **Resultado:**
-<img width="734" height="135" alt="image" src="https://github.com/user-attachments/assets/a3ad3ed6-cb39-473c-9bd4-37bc012ea86d" />
+      <img width="734" height="135" alt="image" src="https://github.com/user-attachments/assets/a3ad3ed6-cb39-473c-9bd4-37bc012ea86d" />
 
 
 
