@@ -133,8 +133,6 @@ GO
   <img width="1455" height="659" alt="WhatsApp Image 2026-10-14 at 1 36 24 PM" src="https://github.com/user-attachments/assets/3b8af27a-3c2f-4bb8-8763-f6506bd94244" />
 
 
-**Hallazgos:**
-
 Entre 2015 y 2016, las ventas netas se mantuvieron bastante estables en torno a los 10,6 millones anuales (con apenas un leve ajuste del -0,2 %) y altibajos mensuales normales de entre el -8 % y el +6,5 %. La tendencia mejoró hacia 2017, registrando un crecimiento del 4,1 % entre enero y octubre en comparación con el mismo periodo del año anterior.
 
 Febrero suele ser el mes más flojo del año, registrando 792 mil en 2015 y 834 mil en 2016. Por su parte, el margen de beneficio se movió entre el 10 % y el 14 %. Cabe señalar que las ganancias resultaron ser más volátiles que las ventas, lo que demuestra que los resultados no dependen únicamente de cuánto se vende, sino también del margen que se le saca a cada operación.
@@ -197,7 +195,6 @@ GO
   <img width="795" height="189" alt="image" src="https://github.com/user-attachments/assets/2dc86464-70fe-4d6c-b2b0-0f136e47069d" />
 
 
-**Hallazgos:**
 El margen de beneficio se mantiene bastante estable, entre el 11,72 % y el 12,95 %. Además, no disminuye de manera continua, ya que con descuentos superiores al 20 % vuelve a subir al 12,85 %, aunque este grupo solo representa el 4,63 % de las ventas.
 
 Por otro lado, la gran mayoría de las operaciones se realiza con alguna rebaja, ya que el 93,8 % de las ventas se realiza con algún descuento y el 41 % con más de 10 %.
@@ -254,7 +251,6 @@ GO
 
 
 
-**Hallazgos:**
 De un total de 62 897 pedidos, 36 048 llegan tarde, lo que representa el 57,3 % de las entregas.
 
 Al analizar los datos por tipo de envío, First Class se retrasa en el 100 % de los casos, siempre con un día de demora, mientras que Second Class lo hace en el 80 %, con un promedio de 2,5 días. En cambio, Standard Class registra la tasa más baja de incumplimiento con un 39,85 %.
@@ -347,8 +343,7 @@ GO
   <img width="422" height="217" alt="image" src="https://github.com/user-attachments/assets/43f69b9e-abf2-4feb-9fa0-95ea3b21fbff" />
 
 
-**Hallazgos:**
-- No se observa una estacionalidad marcada en los datos, ya que once de los doce meses del año se ubican en un rango muy estable entre 98,0 y 102,5. El único mes claramente bajo es febrero, que registra un índice de 91,97, aunque su menor cantidad de días podría explicar gran parte de esa diferencia.
+No se observa una estacionalidad marcada en los datos, ya que once de los doce meses del año se ubican en un rango muy estable entre 98,0 y 102,5. El único mes claramente bajo es febrero, que registra un índice de 91,97, aunque su menor cantidad de días podría explicar gran parte de esa diferencia.
 
 Por su parte, noviembre con 100,90 y diciembre con 102,10 tampoco reflejan un impacto significativo por la temporada de fin de año. Asimismo, las variaciones según el día de la semana son mínimas, pues la brecha entre el día más alto que es el sábado y el más bajo que es el miércoles alcanza tan solo un 3 % aproximadamente.
 
