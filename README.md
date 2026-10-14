@@ -64,7 +64,6 @@ El archivo
 crea y puebla las tablas del modelo, de modo que el proceso se pueda reproducir desde la tabla de
 staging.
 
----
 
 ## Definiciones
 
