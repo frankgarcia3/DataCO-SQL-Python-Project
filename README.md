@@ -134,6 +134,7 @@ GO
 
 
 **Hallazgos:**
+
 Entre 2015 y 2016, las ventas netas se mantuvieron bastante estables en torno a los 10,6 millones anuales (con apenas un leve ajuste del -0,2 %) y altibajos mensuales normales de entre el -8 % y el +6,5 %. La tendencia mejoró hacia 2017, registrando un crecimiento del 4,1 % entre enero y octubre en comparación con el mismo periodo del año anterior.
 
 Febrero suele ser el mes más flojo del año, registrando 792 mil en 2015 y 834 mil en 2016. Por su parte, el margen de beneficio se movió entre el 10 % y el 14 %. Cabe señalar que las ganancias resultaron ser más volátiles que las ventas, lo que demuestra que los resultados no dependen únicamente de cuánto se vende, sino también del margen que se le saca a cada operación.
