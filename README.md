@@ -376,8 +376,8 @@ margen (`Benefit / Total_Amount`) del resto?
 
 
 
-**Hallazgos:**
-- El 18,7 % de los ítems presenta un margen negativo, mientras que el 81,3 % restante genera ganancias. Curiosamente, los productos con un margen de entre el 0 % y el 20 % forman el grupo más pequeño con apenas un 21,6 %. Esto demuestra que la distribución se concentra principalmente en los extremos, es decir, en artículos con alta rentabilidad o directamente en aquellos que operan con pérdidas.
+
+El 18,7 % de los ítems presenta un margen negativo, mientras que el 81,3 % restante genera ganancias. Curiosamente, los productos con un margen de entre el 0 % y el 20 % forman el grupo más pequeño con apenas un 21,6 %. Esto demuestra que la distribución se concentra principalmente en los extremos, es decir, en artículos con alta rentabilidad o directamente en aquellos que operan con pérdidas.
 
 ---
 
@@ -391,7 +391,7 @@ margen (`Benefit / Total_Amount`) del resto?
 
 
 
-**Hallazgos:**
+
 La correlación entre descuento y margen es de -0,0015, prácticamente nula. Y el margen promedio es plano (~0,12) en todos los niveles de descuento.
 
 ---
@@ -406,7 +406,7 @@ La correlación entre descuento y margen es de -0,0015, prácticamente nula. Y e
 
 
 
-**Hallazgos:**
+
 El porcentaje de retrasos depende directamente del modo de envío y no del mercado. En los cinco mercados analizados, First Class se retrasa en el 100 % de los pedidos, Second Class se mantiene en torno al 80 % y Standard Class se ubica cerca del 40 %.
 Por su parte, la modalidad Same Day muestra la mayor variación entre regiones, oscilando entre el 46 % y el 51 %, aunque al tratarse de un volumen de datos más reducido esta brecha podría responder a simple ruido estadístico.
   
