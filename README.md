@@ -87,24 +87,6 @@ staging.
 **Pregunta:** ¿Cómo evolucionan las ventas y el beneficio mes a mes y cuánto
 varían respecto al mes anterior?
 
-**Hallazgos:**
-- Las ventas netas son estables: ~10,6 M anuales en 2015 y 2016 (-0,2 %),
-  con variaciones mensuales normales de entre -8 % y +6,5 %. <!-- VERIFICAR con consulta de totales anuales -->
-- De enero a octubre de 2017 las ventas crecen ~4,1 % frente al mismo
-  periodo de 2016. <!-- VERIFICAR -->
-- Febrero es el mes más bajo de cada año (792 mil en 2015 y 834 mil en 2016).
-- El margen se mueve entre 10 % y 14 %. El beneficio es más volátil que las
-  ventas, lo que indica variación de margen y no solo de volumen.
-
-**Nota de calidad de datos:** en noviembre y diciembre de 2017 las ventas
-caen ~40 % y ~52 % frente a los mismos meses de 2016 (538 mil y 432 mil
-frente a 895 mil), y enero de 2018 sigue bajo (285 mil). Hay ventas todos los
-días de esos meses y la causa no se puede determinar con los datos
-disponibles, por lo que no se interpreta como una caída real del negocio.
-
-
-### Query 1: Evolución mensual de ventas y beneficios
-
 ```sql
 USE DataCO
 GO
@@ -153,39 +135,28 @@ GO
 ```
 
 
+**Hallazgos:**
+- Las ventas netas son estables: ~10,6 M anuales en 2015 y 2016 (-0,2 %),
+  con variaciones mensuales normales de entre -8 % y +6,5 %. <!-- VERIFICAR con consulta de totales anuales -->
+- De enero a octubre de 2017 las ventas crecen ~4,1 % frente al mismo
+  periodo de 2016. <!-- VERIFICAR -->
+- Febrero es el mes más bajo de cada año (792 mil en 2015 y 834 mil en 2016).
+- El margen se mueve entre 10 % y 14 %. El beneficio es más volátil que las
+  ventas, lo que indica variación de margen y no solo de volumen.
+
+**Nota de calidad de datos:** en noviembre y diciembre de 2017 las ventas
+caen ~40 % y ~52 % frente a los mismos meses de 2016 (538 mil y 432 mil
+frente a 895 mil), y enero de 2018 sigue bajo (285 mil). Hay ventas todos los
+días de esos meses y la causa no se puede determinar con los datos
+disponibles, por lo que no se interpreta como una caída real del negocio.
+
+
+
+
 ### Consulta 2: Margen según el nivel de descuento
 
 **Pregunta:** ¿Cómo cambia el margen a medida que aumenta el descuento
 aplicado a cada ítem?
-
-**Técnicas:** CTE, `CASE WHEN` para crear tramos, `SUM() OVER ()` para la
-participación sobre el total, agregación condicional, `NULLIF`.
-
-**Resultado:**
-
-| Tramo | Ítems | Ventas netas | % ventas | Beneficio | Margen % | Ítems con pérdida | % con pérdida |
-|---|---|---|---|---|---|---|---|
-| Sin descuento | 9 640 | 1 966 128,04 | 6,21 | 254 642,79 | 12,95 | 1 790 | 18,57 |
-| 1 % - 5 % | 48 003 | 9 482 703,92 | 29,97 | 1 125 743,14 | 11,87 | 8 961 | 18,67 |
-| 6 % - 10 % | 38 386 | 7 212 039,88 | 22,79 | 882 469,98 | 12,24 | 7 044 | 18,35 |
-| 11 % - 15 % | 28 737 | 5 074 819,31 | 16,04 | 599 919,36 | 11,82 | 5 446 | 18,95 |
-| 16 % - 20 % | 38 424 | 6 444 632,78 | 20,37 | 755 546,32 | 11,72 | 7 306 | 19,01 |
-| Más de 20 % | 9 575 | 1 464 340,82 | 4,63 | 188 099,04 | 12,85 | 1 748 | 18,26 |
-| **Total** | **172 765** | **31 644 664,75** | **100** | **3 806 420,63** | **12,03** | **32 295** | **18,69** |
-
-<!-- VERIFICAR totales y % con pérdida con una consulta sin agrupar por tramo -->
-
-**Hallazgos:**
-- El margen se mantiene en un rango estrecho (11,72 % a 12,95 %): solo 1,23
-  puntos porcentuales entre el mejor y el peor tramo, y no cae de forma
-  continua (el tramo de más de 20 % recupera 12,85 %, con solo el 4,63 % de
-  las ventas).
-- El 93,8 % de las ventas se realiza con algún descuento y el 41 % con más
-  de 10 %.
-- Cerca del 18,7 % de los ítems tiene beneficio negativo, y la proporción es
-  prácticamente la misma en todos los tramos (18,3 % a 19,0 %), incluso sin
-  descuento. El descuento, por tanto, no explica las pérdidas.
-
 
 ```sql
 USE DataCO
@@ -228,6 +199,35 @@ ORDER BY MIN(Discount_Rate)
 GO
 ```
 
+
+
+**Resultado:**
+
+| Tramo | Ítems | Ventas netas | % ventas | Beneficio | Margen % | Ítems con pérdida | % con pérdida |
+|---|---|---|---|---|---|---|---|
+| Sin descuento | 9 640 | 1 966 128,04 | 6,21 | 254 642,79 | 12,95 | 1 790 | 18,57 |
+| 1 % - 5 % | 48 003 | 9 482 703,92 | 29,97 | 1 125 743,14 | 11,87 | 8 961 | 18,67 |
+| 6 % - 10 % | 38 386 | 7 212 039,88 | 22,79 | 882 469,98 | 12,24 | 7 044 | 18,35 |
+| 11 % - 15 % | 28 737 | 5 074 819,31 | 16,04 | 599 919,36 | 11,82 | 5 446 | 18,95 |
+| 16 % - 20 % | 38 424 | 6 444 632,78 | 20,37 | 755 546,32 | 11,72 | 7 306 | 19,01 |
+| Más de 20 % | 9 575 | 1 464 340,82 | 4,63 | 188 099,04 | 12,85 | 1 748 | 18,26 |
+| **Total** | **172 765** | **31 644 664,75** | **100** | **3 806 420,63** | **12,03** | **32 295** | **18,69** |
+
+<!-- VERIFICAR totales y % con pérdida con una consulta sin agrupar por tramo -->
+
+**Hallazgos:**
+- El margen se mantiene en un rango estrecho (11,72 % a 12,95 %): solo 1,23
+  puntos porcentuales entre el mejor y el peor tramo, y no cae de forma
+  continua (el tramo de más de 20 % recupera 12,85 %, con solo el 4,63 % de
+  las ventas).
+- El 93,8 % de las ventas se realiza con algún descuento y el 41 % con más
+  de 10 %.
+- Cerca del 18,7 % de los ítems tiene beneficio negativo, y la proporción es
+  prácticamente la misma en todos los tramos (18,3 % a 19,0 %), incluso sin
+  descuento. El descuento, por tanto, no explica las pérdidas.
+
+
+
 ---
 
 ### Consulta 3: Retrasos por modo de envío
@@ -235,39 +235,6 @@ GO
 **Pregunta:** ¿Qué modo de envío tiene más retrasos y de cuántos días?
 
 **Definiciones:** retraso = días reales > días programados.
-
-**Resultado:**
-
-| Modo de envío | Pedidos | Con retraso | % retraso | Días prog. | Días reales | Retraso prom. (días) |
-|---|---|---|---|---|---|---|
-| First Class | 9 602 | 9 602 | 100,00 | 1,00 | 2,00 | 1,00 |
-| Second Class | 12 256 | 9 803 | 79,99 | 2,00 | 4,00 | 2,50 |
-| Same Day | 3 407 | 1 648 | 48,37 | 0,00 | 0,48 | 1,00 |
-| Standard Class | 37 632 | 14 995 | 39,85 | 4,00 | 3,99 | 1,50 |
-
-**Hallazgos:**
-- De 62 897 pedidos, 36 048 (57,3 %) llegan tarde.
-- First Class se retrasa en el 100 % de sus pedidos (siempre 1 día) y Second
-  Class en el 80 % (2,5 días de promedio), frente al 39,85 % de Standard
-  Class.
-- Standard Class tiene la menor tasa, pero concentra el 41,6 % de los pedidos
-  retrasados por su volumen (59,8 % de los pedidos).
-- Los modos más rápidos tienen plazos programados muy cortos (0 a 2 días),
-  por lo que una demora de un día ya cuenta como retraso.
-
-**Recomendación de negocio:** revisar los plazos prometidos de First y Second
-Class, que no se cumplen de forma sistemática, antes de buscar causas en la
-operación logística.
-
-**Nota de calidad de datos:** `Late_delivery_risk` coincide con el retraso
-medido por días en los 36 048 pedidos válidos. Las únicas 1 650
-discrepancias (788 `CANCELED` y 862 `SUSPECTED_FRAUD`) corresponden a
-pedidos excluidos del análisis. El retraso se calcula con los días por
-transparencia; el resultado es equivalente a usar la bandera.
-
-**Limitación:** el 100 % de First Class, con días reales siempre iguales a
-programados + 1, no es un patrón típico de operación real y sugiere que los
-días del dataset siguen una regla artificial.
 
 ```sql
 USE DataCO;
@@ -303,6 +270,41 @@ ORDER BY '% Retraso' DESC
 GO
 ```
 
+**Resultado:**
+
+| Modo de envío | Pedidos | Con retraso | % retraso | Días prog. | Días reales | Retraso prom. (días) |
+|---|---|---|---|---|---|---|
+| First Class | 9 602 | 9 602 | 100,00 | 1,00 | 2,00 | 1,00 |
+| Second Class | 12 256 | 9 803 | 79,99 | 2,00 | 4,00 | 2,50 |
+| Same Day | 3 407 | 1 648 | 48,37 | 0,00 | 0,48 | 1,00 |
+| Standard Class | 37 632 | 14 995 | 39,85 | 4,00 | 3,99 | 1,50 |
+
+**Hallazgos:**
+- De 62 897 pedidos, 36 048 (57,3 %) llegan tarde.
+- First Class se retrasa en el 100 % de sus pedidos (siempre 1 día) y Second
+  Class en el 80 % (2,5 días de promedio), frente al 39,85 % de Standard
+  Class.
+- Standard Class tiene la menor tasa, pero concentra el 41,6 % de los pedidos
+  retrasados por su volumen (59,8 % de los pedidos).
+- Los modos más rápidos tienen plazos programados muy cortos (0 a 2 días),
+  por lo que una demora de un día ya cuenta como retraso.
+
+**Recomendación de negocio:** revisar los plazos prometidos de First y Second
+Class, que no se cumplen de forma sistemática, antes de buscar causas en la
+operación logística.
+
+**Nota de calidad de datos:** `Late_delivery_risk` coincide con el retraso
+medido por días en los 36 048 pedidos válidos. Las únicas 1 650
+discrepancias (788 `CANCELED` y 862 `SUSPECTED_FRAUD`) corresponden a
+pedidos excluidos del análisis. El retraso se calcula con los días por
+transparencia; el resultado es equivalente a usar la bandera.
+
+**Limitación:** el 100 % de First Class, con días reales siempre iguales a
+programados + 1, no es un patrón típico de operación real y sugiere que los
+días del dataset siguen una regla artificial.
+
+
+
 ---
 
 ### Consulta 4: Estacionalidad (mes del año y día de la semana)
@@ -313,6 +315,42 @@ la semana?
 **Definiciones:** análisis sobre **2015 y 2016** (años completos). Se
 excluye 2017 por la anomalía de noviembre-diciembre. El índice estacional
 es 100 cuando el mes iguala al promedio mensual.
+
+```sql
+USE DataCO
+GO
+
+WITH VentasMensuales AS 
+(
+    SELECT d.Month AS Mes,
+           d.Month_Name AS Nombre_Mes,
+           SUM(f.Total_Amount) AS Ventas_Netas
+    FROM FactSales f
+
+    INNER JOIN DimDate d ON f.Order_Date_Key = d.Date_Key
+    INNER JOIN DimOrder o ON f.Order_Id= o.Order_Id
+    WHERE o.Order_Status NOT IN ('CANCELED', 'SUSPECTED_FRAUD') AND d.Year BETWEEN 2015 AND 2016
+    GROUP BY d.Year, d.Month, d.Month_Name
+),
+
+PorMes AS 
+(
+    SELECT Mes,
+           Nombre_Mes,
+           AVG(Ventas_Netas) AS Ventas_Prom_Mensual
+    FROM VentasMensuales
+    GROUP BY Mes, Nombre_Mes
+)
+
+SELECT Nombre_Mes AS 'Meses' ,
+       CAST(Ventas_Prom_Mensual AS DECIMAL(12,2)) AS'Promedio de ventas mensulaes',
+       CAST(Ventas_Prom_Mensual*100.0 /AVG(Ventas_Prom_Mensual) OVER () AS DECIMAL(6,2)) AS 'Indice estacional'
+FROM PorMes
+ORDER BY Mes;
+GO
+
+```
+
 
 **Resultado por mes:**
 
@@ -330,6 +368,31 @@ es 100 cuando el mes iguala al promedio mensual.
 | Octubre | 906 032,12 | 102,47 |
 | Noviembre | 892 127,35 | 100,90 |
 | Diciembre | 902 715,52 | 102,10 |
+
+```sql
+USE DataCO
+GO
+
+WITH VentasDiarias AS 
+(
+    SELECT d.Full_Date,
+           d.Day_Name,
+           SUM(f.Total_Amount) AS Ventas_Netas
+    FROM FactSales f
+
+    INNER JOIN DimDate d ON f.Order_Date_Key = d.Date_Key
+    INNER JOIN DimOrder o ON f.Order_Id= o.Order_Id
+    WHERE o.Order_Status NOT IN ('CANCELED', 'SUSPECTED_FRAUD')AND d.Year BETWEEN 2015 AND 2016
+    GROUP BY d.Full_Date, d.Day_Name
+)
+
+SELECT Day_Name AS 'Dia de la semana',
+       COUNT(*)AS 'Dias',
+       CAST(AVG(Ventas_Netas)AS DECIMAL(18,2)) AS 'Promedio de ventas diarias'
+FROM VentasDiarias
+GROUP BY Day_Name
+GO
+```
 
 **Resultado por día de la semana** (ventas promedio por día calendario):
 
@@ -367,66 +430,8 @@ estacionales.
 **Limitación:** solo dos años completos; diferencias de este tamaño no
 permiten distinguir un patrón real del ruido.
 
-```sql
-USE DataCO
-GO
-
-WITH VentasDiarias AS 
-(
-    SELECT d.Full_Date,
-           d.Day_Name,
-           SUM(f.Total_Amount) AS Ventas_Netas
-    FROM FactSales f
-
-    INNER JOIN DimDate d ON f.Order_Date_Key = d.Date_Key
-    INNER JOIN DimOrder o ON f.Order_Id= o.Order_Id
-    WHERE o.Order_Status NOT IN ('CANCELED', 'SUSPECTED_FRAUD')AND d.Year BETWEEN 2015 AND 2016
-    GROUP BY d.Full_Date, d.Day_Name
-)
-
-SELECT Day_Name AS 'Dia de la semana',
-       COUNT(*)AS 'Dias',
-       CAST(AVG(Ventas_Netas)AS DECIMAL(18,2)) AS 'Promedio de ventas diarias'
-FROM VentasDiarias
-GROUP BY Day_Name
-GO
-```
 
 
-```sql
-USE DataCO
-GO
-
-WITH VentasMensuales AS 
-(
-    SELECT d.Month AS Mes,
-           d.Month_Name AS Nombre_Mes,
-           SUM(f.Total_Amount) AS Ventas_Netas
-    FROM FactSales f
-
-    INNER JOIN DimDate d ON f.Order_Date_Key = d.Date_Key
-    INNER JOIN DimOrder o ON f.Order_Id= o.Order_Id
-    WHERE o.Order_Status NOT IN ('CANCELED', 'SUSPECTED_FRAUD') AND d.Year BETWEEN 2015 AND 2016
-    GROUP BY d.Year, d.Month, d.Month_Name
-),
-
-PorMes AS 
-(
-    SELECT Mes,
-           Nombre_Mes,
-           AVG(Ventas_Netas) AS Ventas_Prom_Mensual
-    FROM VentasMensuales
-    GROUP BY Mes, Nombre_Mes
-)
-
-SELECT Nombre_Mes AS 'Meses' ,
-       CAST(Ventas_Prom_Mensual AS DECIMAL(12,2)) AS'Promedio de ventas mensulaes',
-       CAST(Ventas_Prom_Mensual*100.0 /AVG(Ventas_Prom_Mensual) OVER () AS DECIMAL(6,2)) AS 'Indice estacional'
-FROM PorMes
-ORDER BY Mes;
-GO
-
-```
 
 
 ## Análisis en Python (post-SQL)
