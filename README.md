@@ -31,6 +31,8 @@ dimensión de pedido para los atributos y medidas que pertenecen al pedido.
 
 
 
+
+
 | Tabla | Grano | Contenido |
 |---|---|---|
 | `FactSales` | 1 fila por ítem de pedido | ventas, descuento, beneficio, cantidades, días de envío y claves a las dimensiones |
@@ -39,9 +41,6 @@ dimensión de pedido para los atributos y medidas que pertenecen al pedido.
 | `DimShipping` | 1 fila por combinación | modo de envío y estado de entrega |
 | `DimDate` | 1 fila por día | año, mes, nombre del mes, día, nombre del día |
 
-**Decisión de diseño:** los datos personales de clientes (nombre, calle) y
-las columnas duplicadas del dataset original no se usan en ningún análisis ni
-se publican en este repositorio.
 
 ### Carga y tipos de datos
 
@@ -80,6 +79,7 @@ staging.
 - **Unidad de análisis de entregas:** el pedido, no el ítem. Las medidas de
   envío se repiten en cada ítem, por lo que se deduplican por `Order_Id`
   antes de promediar.
+  
 
 ## Consultas SQL
 
@@ -145,11 +145,12 @@ GO
 - El margen se mueve entre 10 % y 14 %. El beneficio es más volátil que las
   ventas, lo que indica variación de margen y no solo de volumen.
 
-**Nota de calidad de datos:** en noviembre y diciembre de 2017 las ventas
-caen ~40 % y ~52 % frente a los mismos meses de 2016 (538 mil y 432 mil
+**Nota:** En noviembre y diciembre de 2017 las ventas
+caen 40 % y 52 % frente a los mismos meses de 2016 (538 mil y 432 mil
 frente a 895 mil), y enero de 2018 sigue bajo (285 mil). Hay ventas todos los
 días de esos meses y la causa no se puede determinar con los datos
 disponibles, por lo que no se interpreta como una caída real del negocio.
+
 
 
 
@@ -200,8 +201,6 @@ ORDER BY MIN(Discount_Rate)
 GO
 ```
 
-
-
 **Resultado:**
 
 | Tramo | Ítems | Ventas netas | % ventas | Beneficio | Margen % | Ítems con pérdida | % con pérdida |
@@ -214,7 +213,9 @@ GO
 | Más de 20 % | 9 575 | 1 464 340,82 | 4,63 | 188 099,04 | 12,85 | 1 748 | 18,26 |
 | **Total** | **172 765** | **31 644 664,75** | **100** | **3 806 420,63** | **12,03** | **32 295** | **18,69** |
 
-<!-- VERIFICAR totales y % con pérdida con una consulta sin agrupar por tramo -->
+
+
+
 
 **Hallazgos:**
 - El margen se mantiene en un rango estrecho (11,72 % a 12,95 %): solo 1,23
@@ -235,7 +236,7 @@ GO
 
 **Pregunta:** ¿Qué modo de envío tiene más retrasos y de cuántos días?
 
-**Definiciones:** retraso = días reales > días programados.
+Se entiende como retraso = días reales > días programados.
 
 ```sql
 USE DataCO;
@@ -294,18 +295,6 @@ GO
 Class, que no se cumplen de forma sistemática, antes de buscar causas en la
 operación logística.
 
-**Nota de calidad de datos:** `Late_delivery_risk` coincide con el retraso
-medido por días en los 36 048 pedidos válidos. Las únicas 1 650
-discrepancias (788 `CANCELED` y 862 `SUSPECTED_FRAUD`) corresponden a
-pedidos excluidos del análisis. El retraso se calcula con los días por
-transparencia; el resultado es equivalente a usar la bandera.
-
-**Limitación:** el 100 % de First Class, con días reales siempre iguales a
-programados + 1, no es un patrón típico de operación real y sugiere que los
-días del dataset siguen una regla artificial.
-
-
-
 ---
 
 ### Consulta 4: Estacionalidad (mes del año y día de la semana)
@@ -313,7 +302,7 @@ días del dataset siguen una regla artificial.
 **Pregunta:** ¿Hay estacionalidad en las ventas por mes del año o por día de
 la semana?
 
-**Definiciones:** análisis sobre **2015 y 2016** (años completos). Se
+En el análisis sobre **2015 y 2016** (años completos). Se
 excluye 2017 por la anomalía de noviembre-diciembre. El índice estacional
 es 100 cuando el mes iguala al promedio mensual.
 
@@ -419,7 +408,7 @@ GO
   más bajo (miércoles) es de ~3 %, y seis de los siete días están dentro de
   ±1 % del promedio.
 
-**Nota de calidad de datos:** en 2017, noviembre y diciembre caen ~40 % y
+**Nota:** en 2017, noviembre y diciembre caen ~40 % y
 ~52 % frente a 2016 aunque todos los días tienen ventas. Con 2017 incluido,
 el índice de esos meses bajaría a 88,87 y 85,62, lo que parecería
 estacionalidad pero no lo es, porque 2015 y 2016 no muestran esa caída.
@@ -428,21 +417,14 @@ estacionalidad pero no lo es, porque 2015 y 2016 no muestran esa caída.
 semana; no se justifica planificar inventario o capacidad con picos
 estacionales.
 
-**Limitación:** solo dos años completos; diferencias de este tamaño no
-permiten distinguir un patrón real del ruido.
-
-
-
-
+---
 
 ## Análisis en Python (post-SQL)
 
 Conecté Python (pandas, SQLAlchemy, pyodbc) a la base `DataCO` en SQL
 Server. Cada análisis usa los mismos filtros que las consultas SQL para que
-las cifras sean comparables. Notebook: [`notebooks/analisis_dataco.ipynb`](notebooks/analisis_dataco.ipynb).
+las cifras sean comparables. Notebook: [`graphics.ipynb`](graphics.ipynb).
 
-**Validación de la conexión:** el DataFrame cargado tiene [172 765] filas,
-igual que el conteo de ítems válidos de la consulta 4. <!-- VERIFICAR con len(df) -->
 
 ### Análisis 1: Distribución de ítems por rango de margen
 
@@ -452,14 +434,17 @@ margen (`Benefit / Total_Amount`) del resto?
 <img width="888" height="484" alt="image" src="https://github.com/user-attachments/assets/c1d49067-dbb0-4171-a498-d25d60b94ac8" />
 
 
+
 **Hallazgos:**
 - El 18,7 % de los ítems tiene margen negativo, cifra que coincide con la
   consulta 4 de SQL (32 295 de 172 765 ítems), lo que sirve como validación
   cruzada entre SQL y Python.
 - El 81,3 % de los ítems tiene margen positivo, y el 43 % supera el 30 %
-  (22,1 % entre 30 y 40 %, y 20,9 % por encima de 40 %). <!-- VERIFICAR sumas -->
+  (22,1 % entre 30 y 40 %, y 20,9 % por encima de 40 %). 
 - Los ítems con margen bajo (entre 0 y 20 %) son el grupo más pequeño
-  (21,6 %): la distribución se concentra en margen alto o en pérdida.  
+  (21,6 %): la distribución se concentra en margen alto o en pérdida.
+
+---
 
 ### Análisis 2: Descuento vs. margen
 
@@ -468,20 +453,22 @@ margen (`Benefit / Total_Amount`) del resto?
 <img width="884" height="483" alt="WhatsApp Image 2026-10-14 at 12 58 27 PM" src="https://github.com/user-attachments/assets/13601b82-0708-4e7f-884a-1ec0137c3d9f" />
 
 
+
+
 **Hallazgos:**
 - La correlación entre descuento y margen es de -0,0015, prácticamente nula.
 - El margen promedio es plano (~0,12) en todos los niveles de descuento, de
   0 % a 25 %, coherente con la consulta 4.
 
-**Limitación:** el gráfico usa una muestra aleatoria de 5 000 ítems para los
-puntos; la línea de margen promedio usa todos los datos.
-
+---
 
 ### Análisis 4: Retraso por modo de envío y mercado
 
 **Pregunta:** ¿El retraso depende del modo de envío, del mercado o de ambos?
 
 <img width="847" height="438" alt="WhatsApp Image 2026-10-14 at 12 57 20 PM" src="https://github.com/user-attachments/assets/ffd1ca0b-98c9-44f7-b613-4add96bbf174" />
+
+
 
 **Hallazgos:**
 - El retraso depende del modo de envío, no del mercado: dentro de cada modo,
@@ -491,23 +478,10 @@ puntos; la línea de margen promedio usa todos los datos.
 - Same Day presenta el mayor rango entre mercados (46 % a 51 %), pero con
   celdas más pequeñas esa diferencia puede ser ruido.
 - Los resultados por modo coinciden con la consulta 5.
-
-**Limitaciones:**
-- La celda más pequeña tiene 223 pedidos.
-- La uniformidad entre mercados y el 100 % de First Class sugieren que los
-  días de entrega del dataset siguen una regla artificial, por lo que no
-  deben leerse como desempeño logístico real.
-
-## Estructura del repositorio
-
-```
-/scripts        00_creacion_y_carga_tablas.sql (tipos, dimensiones y hechos)
-                y consultas SQL numeradas (01_ventas_mensuales.sql, ...)
-/notebooks      análisis en Python
-/imagenes       capturas y gráficos
-README.md
-```
+  
+---
+  
 
 Los datos originales no se incluyen por tamaño; el dataset se puede
-descargar desde Kaggle (*DataCo Smart Supply Chain for Big Data Analysis*).
+descargar desde Kaggle (DataCo Smart Supply Chain ).
 
