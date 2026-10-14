@@ -128,6 +128,8 @@ FROM Anterior
 ORDER BY Año, Mes
 GO
 ```
+**Resultado:**
+<img width="1455" height="659" alt="WhatsApp Image 2026-10-14 at 1 36 24 PM" src="https://github.com/user-attachments/assets/3b8af27a-3c2f-4bb8-8763-f6506bd94244" />
 
 
 **Hallazgos:**
@@ -195,18 +197,7 @@ GO
 
 **Resultado:**
 
-| Tramo | Ítems | Ventas netas | % ventas | Beneficio | Margen % | Ítems con pérdida | % con pérdida |
-|---|---|---|---|---|---|---|---|
-| Sin descuento | 9 640 | 1 966 128,04 | 6,21 | 254 642,79 | 12,95 | 1 790 | 18,57 |
-| 1 % - 5 % | 48 003 | 9 482 703,92 | 29,97 | 1 125 743,14 | 11,87 | 8 961 | 18,67 |
-| 6 % - 10 % | 38 386 | 7 212 039,88 | 22,79 | 882 469,98 | 12,24 | 7 044 | 18,35 |
-| 11 % - 15 % | 28 737 | 5 074 819,31 | 16,04 | 599 919,36 | 11,82 | 5 446 | 18,95 |
-| 16 % - 20 % | 38 424 | 6 444 632,78 | 20,37 | 755 546,32 | 11,72 | 7 306 | 19,01 |
-| Más de 20 % | 9 575 | 1 464 340,82 | 4,63 | 188 099,04 | 12,85 | 1 748 | 18,26 |
-| **Total** | **172 765** | **31 644 664,75** | **100** | **3 806 420,63** | **12,03** | **32 295** | **18,69** |
-
-
-
+<img width="795" height="189" alt="image" src="https://github.com/user-attachments/assets/2dc86464-70fe-4d6c-b2b0-0f136e47069d" />
 
 
 **Hallazgos:**
@@ -265,13 +256,9 @@ GO
 ```
 
 **Resultado:**
+<img width="734" height="135" alt="image" src="https://github.com/user-attachments/assets/a3ad3ed6-cb39-473c-9bd4-37bc012ea86d" />
 
-| Modo de envío | Pedidos | Con retraso | % retraso | Días prog. | Días reales | Retraso prom. (días) |
-|---|---|---|---|---|---|---|
-| First Class | 9 602 | 9 602 | 100,00 | 1,00 | 2,00 | 1,00 |
-| Second Class | 12 256 | 9 803 | 79,99 | 2,00 | 4,00 | 2,50 |
-| Same Day | 3 407 | 1 648 | 48,37 | 0,00 | 0,48 | 1,00 |
-| Standard Class | 37 632 | 14 995 | 39,85 | 4,00 | 3,99 | 1,50 |
+
 
 **Hallazgos:**
 - De 62 897 pedidos, 36 048 (57,3 %) llegan tarde.
@@ -336,20 +323,8 @@ GO
 
 **Resultado por mes:**
 
-| Mes | Ventas prom. mensuales | Índice |
-|---|---|---|
-| Enero | 906 483,86 | 102,53 |
-| Febrero | 813 182,78 | 91,97 |
-| Marzo | 896 342,82 | 101,38 |
-| Abril | 866 743,87 | 98,03 |
-| Mayo | 888 029,74 | 100,44 |
-| Junio | 872 056,30 | 98,63 |
-| Julio | 895 140,74 | 101,24 |
-| Agosto | 898 931,47 | 101,67 |
-| Septiembre | 872 009,31 | 98,63 |
-| Octubre | 906 032,12 | 102,47 |
-| Noviembre | 892 127,35 | 100,90 |
-| Diciembre | 902 715,52 | 102,10 |
+<img width="487" height="350" alt="image" src="https://github.com/user-attachments/assets/cf9eeb8f-6ab1-4716-a33b-6de774446d1a" />
+
 
 ```sql
 USE DataCO
@@ -378,15 +353,8 @@ GO
 
 **Resultado por día de la semana** (ventas promedio por día calendario):
 
-| Día | Días en el periodo | Ventas prom. diarias |
-|---|---|---|
-| Sábado | 105 | 29 329,30 |
-| Domingo | 104 | 29 218,38 |
-| Viernes | 104 | 29 216,78 |
-| Martes | 104 | 29 021,19 |
-| Jueves | 105 | 28 985,39 |
-| Lunes | 104 | 28 956,42 |
-| Miércoles | 104 | 28 465,43 |
+<img width="422" height="217" alt="image" src="https://github.com/user-attachments/assets/43f69b9e-abf2-4feb-9fa0-95ea3b21fbff" />
+
 
 **Hallazgos:**
 - No hay estacionalidad marcada: once de los doce meses se ubican entre 98,0
