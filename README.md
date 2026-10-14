@@ -22,7 +22,7 @@ matplotlib).
 - Cerca del 18,7 % de los ítems tiene beneficio negativo, con una proporción
   casi idéntica en todos los tramos de descuento.
 
-## Modelo de datos
+## Arquitectura y Modelado de Datos (ETL)
 
 Esquema estrella con una tabla de hechos a nivel de **ítem de pedido** y una
 dimensión de pedido para los atributos y medidas que pertenecen al pedido.
@@ -106,6 +106,33 @@ disponibles, por lo que no se interpreta como una caída real del negocio.
 
 ![consulta_01](imagenes/consulta_01.png)
 
+### Query 1: Evolución mensual de ventas y beneficios
+
+```sql
+-- Nombre de la query: Evolución mensual de ventas y beneficios
+
+WITH VentasMensuales AS (
+    SELECT
+        d.Year AS Ano,
+        d.Month AS Mes,
+        SUM(f.Total_Amount) AS Ventas,
+        SUM(f.Benefit) AS Beneficio
+    FROM FactSales f
+    INNER JOIN DimDate d
+        ON f.Order_Date_Key = d.Date_Key
+    GROUP BY
+        d.Year,
+        d.Month
+)
+SELECT *
+FROM VentasMensuales;
+```
+
+
+
+
+
+
 ---
 
 ### Consulta 4: Margen según el nivel de descuento
@@ -141,17 +168,6 @@ participación sobre el total, agregación condicional, `NULLIF`.
   prácticamente la misma en todos los tramos (18,3 % a 19,0 %), incluso sin
   descuento. El descuento, por tanto, no explica las pérdidas.
 
-**Recomendación de negocio:** el descuento no explica ni el margen ni las
-pérdidas. Conviene investigar por qué ~1 de cada 5 ítems tiene beneficio
-negativo (producto, categoría, modo de envío o región) antes de modificar la
-política de descuentos.
-
-**Limitaciones:**
-- Análisis descriptivo: no mide si el descuento generó ventas adicionales.
-- Incluye todos los años, y noviembre-diciembre de 2017 son anómalos. Esto
-  reduce el volumen pero no la comparación entre tramos.
-- El margen casi constante sugiere que el beneficio del dataset puede estar
-  generado en proporción al monto (hipótesis, no comprobada).
 
 ![consulta_04](imagenes/consulta_04.png)
 
