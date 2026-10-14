@@ -87,8 +87,6 @@ staging.
 **Pregunta:** ¿Cómo evolucionan las ventas y el beneficio mes a mes y cuánto
 varían respecto al mes anterior?
 
-**Técnicas:** CTE, `LAG`, `NULLIF`, `INNER JOIN` con `DimDate` y `DimOrder`.
-
 **Hallazgos:**
 - Las ventas netas son estables: ~10,6 M anuales en 2015 y 2016 (-0,2 %),
   con variaciones mensuales normales de entre -8 % y +6,5 %. <!-- VERIFICAR con consulta de totales anuales -->
@@ -104,7 +102,6 @@ frente a 895 mil), y enero de 2018 sigue bajo (285 mil). Hay ventas todos los
 días de esos meses y la causa no se puede determinar con los datos
 disponibles, por lo que no se interpreta como una caída real del negocio.
 
-![consulta_01](imagenes/consulta_01.png)
 
 ### Query 1: Evolución mensual de ventas y beneficios
 
@@ -156,7 +153,7 @@ GO
 ```
 
 
-### Consulta 4: Margen según el nivel de descuento
+### Consulta 2: Margen según el nivel de descuento
 
 **Pregunta:** ¿Cómo cambia el margen a medida que aumenta el descuento
 aplicado a cada ítem?
@@ -190,16 +187,52 @@ participación sobre el total, agregación condicional, `NULLIF`.
   descuento. El descuento, por tanto, no explica las pérdidas.
 
 
-![consulta_04](imagenes/consulta_04.png)
+```sql
+USE DataCO
+GO
+
+WITH Items AS 
+(
+    SELECT f.Order_Item_Id,
+           f.Total_Amount,
+           f.Benefit,
+           f.Discount_Rate,
+           CASE
+           WHEN f.Discount_Rate = 0 THEN 'Sin descuento'
+           WHEN f.Discount_Rate<= 0.05 THEN '1% - 5%'
+           WHEN f.Discount_Rate<= 0.10 THEN '6% - 10%'
+           WHEN f.Discount_Rate <= 0.15 THEN '11% - 15%'
+           WHEN f.Discount_Rate <= 0.20 THEN '16% - 20%'
+           ELSE                              'Más de 20%'
+           END
+           AS Descuento
+    FROM FactSales f
+
+    INNER JOIN DimOrder o 
+    ON o.Order_Id = f.Order_Id
+    WHERE o.Order_Status NOT IN ('CANCELED', 'SUSPECTED_FRAUD')
+ )
+
+SELECT Descuento,
+       COUNT(*) AS 'Items vendidos',
+       SUM(Total_Amount) AS 'Ventas Netas',
+       CAST(SUM(Total_Amount) * 100.0/ SUM( SUM(Total_Amount)) OVER() AS DECIMAL(5,2)) AS '% Ventas',
+       SUM(Benefit) AS 'Beneficio total',
+       CAST(SUM(Benefit) * 100.0 / SUM(Total_Amount)AS DECIMAL(5,2)) AS '% Margen',
+       SUM(CASE 
+           WHEN Benefit < 0 THEN 1 
+           ELSE 0 END) AS 'Items con perdida'
+FROM Items
+GROUP BY Descuento
+ORDER BY MIN(Discount_Rate)
+GO
+```
 
 ---
 
-### Consulta 5: Retrasos por modo de envío
+### Consulta 3: Retrasos por modo de envío
 
 **Pregunta:** ¿Qué modo de envío tiene más retrasos y de cuántos días?
-
-**Técnicas:** CTE con deduplicación por pedido, `CASE WHEN`, agregación
-condicional, `INNER JOIN` con `DimShipping` y `DimOrder`.
 
 **Definiciones:** retraso = días reales > días programados.
 
@@ -236,17 +269,46 @@ transparencia; el resultado es equivalente a usar la bandera.
 programados + 1, no es un patrón típico de operación real y sugiere que los
 días del dataset siguen una regla artificial.
 
-![consulta_05](imagenes/consulta_05.png)
+```sql
+USE DataCO;
+GO
+
+WITH Envios AS 
+(
+    SELECT DISTINCT f.Order_Id,
+                    ds.Shipping_Mode AS Modo_Envio,
+                    (f.Days_For_Shipping_Real -f.Days_For_Shipment_Scheduled)AS Dias_Retraso,
+                    CASE 
+                    WHEN f.Days_For_Shipping_Real> f.Days_For_Shipment_Scheduled
+                    THEN 1 
+                    ELSE 0 
+                    END AS Retraso
+    FROM FactSales f
+    INNER JOIN DimShipping ds ON f.Shipping_Key = ds.Shipping_Key
+    INNER JOIN DimOrder o  ON f.Order_Id = o.Order_Id
+    WHERE o.Order_Status NOT IN ('CANCELED','SUSPECTED_FRAUD')
+)
+
+SELECT
+    Modo_Envio AS 'Modo de envio',
+    COUNT(*) AS 'Total de pedidos',
+    SUM(Retraso) AS 'Pedidos con retraso',
+    CAST(SUM(Retraso) * 100.0 / COUNT(*) AS DECIMAL(5,2)) AS '% Retraso',
+    CAST(AVG(CASE
+             WHEN Retraso = 1
+             THEN (Dias_Retraso) * 1.0 END) AS DECIMAL(5,2))AS 'Promedio de días de retraso'
+FROM Envios
+GROUP BY Modo_Envio
+ORDER BY '% Retraso' DESC
+GO
+```
 
 ---
 
-### Consulta 12: Estacionalidad (mes del año y día de la semana)
+### Consulta 4: Estacionalidad (mes del año y día de la semana)
 
 **Pregunta:** ¿Hay estacionalidad en las ventas por mes del año o por día de
 la semana?
-
-**Técnicas:** CTE, agregación por mes y por día calendario, índice
-estacional con `AVG() OVER ()`.
 
 **Definiciones:** análisis sobre **2015 y 2016** (años completos). Se
 excluye 2017 por la anomalía de noviembre-diciembre. El índice estacional
@@ -305,7 +367,67 @@ estacionales.
 **Limitación:** solo dos años completos; diferencias de este tamaño no
 permiten distinguir un patrón real del ruido.
 
-![consulta_12](imagenes/consulta_12.png)
+```sql
+USE DataCO
+GO
+
+WITH VentasDiarias AS 
+(
+    SELECT d.Full_Date,
+           d.Day_Name,
+           SUM(f.Total_Amount) AS Ventas_Netas
+    FROM FactSales f
+
+    INNER JOIN DimDate d ON f.Order_Date_Key = d.Date_Key
+    INNER JOIN DimOrder o ON f.Order_Id= o.Order_Id
+    WHERE o.Order_Status NOT IN ('CANCELED', 'SUSPECTED_FRAUD')AND d.Year BETWEEN 2015 AND 2016
+    GROUP BY d.Full_Date, d.Day_Name
+)
+
+SELECT Day_Name AS 'Dia de la semana',
+       COUNT(*)AS 'Dias',
+       CAST(AVG(Ventas_Netas)AS DECIMAL(18,2)) AS 'Promedio de ventas diarias'
+FROM VentasDiarias
+GROUP BY Day_Name
+GO
+```
+
+
+```sql
+USE DataCO
+GO
+
+WITH VentasMensuales AS 
+(
+    SELECT d.Month AS Mes,
+           d.Month_Name AS Nombre_Mes,
+           SUM(f.Total_Amount) AS Ventas_Netas
+    FROM FactSales f
+
+    INNER JOIN DimDate d ON f.Order_Date_Key = d.Date_Key
+    INNER JOIN DimOrder o ON f.Order_Id= o.Order_Id
+    WHERE o.Order_Status NOT IN ('CANCELED', 'SUSPECTED_FRAUD') AND d.Year BETWEEN 2015 AND 2016
+    GROUP BY d.Year, d.Month, d.Month_Name
+),
+
+PorMes AS 
+(
+    SELECT Mes,
+           Nombre_Mes,
+           AVG(Ventas_Netas) AS Ventas_Prom_Mensual
+    FROM VentasMensuales
+    GROUP BY Mes, Nombre_Mes
+)
+
+SELECT Nombre_Mes AS 'Meses' ,
+       CAST(Ventas_Prom_Mensual AS DECIMAL(12,2)) AS'Promedio de ventas mensulaes',
+       CAST(Ventas_Prom_Mensual*100.0 /AVG(Ventas_Prom_Mensual) OVER () AS DECIMAL(6,2)) AS 'Indice estacional'
+FROM PorMes
+ORDER BY Mes;
+GO
+
+```
+
 
 ## Análisis en Python (post-SQL)
 
