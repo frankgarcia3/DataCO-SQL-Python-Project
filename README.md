@@ -129,7 +129,8 @@ ORDER BY Año, Mes
 GO
 ```
 **Resultado:**
-      <img width="1455" height="659" alt="WhatsApp Image 2026-10-14 at 1 36 24 PM" src="https://github.com/user-attachments/assets/3b8af27a-3c2f-4bb8-8763-f6506bd94244" />
+
+  <img width="1455" height="659" alt="WhatsApp Image 2026-10-14 at 1 36 24 PM" src="https://github.com/user-attachments/assets/3b8af27a-3c2f-4bb8-8763-f6506bd94244" />
 
 
 **Hallazgos:**
@@ -197,7 +198,7 @@ GO
 
 **Resultado:**
 
-      <img width="795" height="189" alt="image" src="https://github.com/user-attachments/assets/2dc86464-70fe-4d6c-b2b0-0f136e47069d" />
+  <img width="795" height="189" alt="image" src="https://github.com/user-attachments/assets/2dc86464-70fe-4d6c-b2b0-0f136e47069d" />
 
 
 **Hallazgos:**
@@ -257,7 +258,7 @@ GO
 
 **Resultado:**
 
-        <img width="734" height="135" alt="image" src="https://github.com/user-attachments/assets/a3ad3ed6-cb39-473c-9bd4-37bc012ea86d" />
+  <img width="734" height="135" alt="image" src="https://github.com/user-attachments/assets/a3ad3ed6-cb39-473c-9bd4-37bc012ea86d" />
 
 
 
@@ -324,7 +325,7 @@ GO
 
 **Resultado por mes:**
 
-<img width="487" height="350" alt="image" src="https://github.com/user-attachments/assets/cf9eeb8f-6ab1-4716-a33b-6de774446d1a" />
+  <img width="487" height="350" alt="image" src="https://github.com/user-attachments/assets/cf9eeb8f-6ab1-4716-a33b-6de774446d1a" />
 
 
 ```sql
@@ -354,7 +355,7 @@ GO
 
 **Resultado por día de la semana** (ventas promedio por día calendario):
 
-<img width="422" height="217" alt="image" src="https://github.com/user-attachments/assets/43f69b9e-abf2-4feb-9fa0-95ea3b21fbff" />
+  <img width="422" height="217" alt="image" src="https://github.com/user-attachments/assets/43f69b9e-abf2-4feb-9fa0-95ea3b21fbff" />
 
 
 **Hallazgos:**
@@ -392,7 +393,7 @@ las cifras sean comparables. Notebook: [`graphics.ipynb`](graphics.ipynb).
 **Pregunta:** ¿Qué porcentaje de ítems tiene pérdida y cómo se reparte el
 margen (`Benefit / Total_Amount`) del resto?
 
-<img width="888" height="484" alt="image" src="https://github.com/user-attachments/assets/c1d49067-dbb0-4171-a498-d25d60b94ac8" />
+  <img width="888" height="484" alt="image" src="https://github.com/user-attachments/assets/c1d49067-dbb0-4171-a498-d25d60b94ac8" />
 
 
 
@@ -413,7 +414,7 @@ margen (`Benefit / Total_Amount`) del resto?
 
 **Pregunta:** ¿Se relaciona el nivel de descuento con el margen del ítem?
 
-<img width="884" height="483" alt="WhatsApp Image 2026-10-14 at 12 58 27 PM" src="https://github.com/user-attachments/assets/13601b82-0708-4e7f-884a-1ec0137c3d9f" />
+  <img width="884" height="483" alt="WhatsApp Image 2026-10-14 at 12 58 27 PM" src="https://github.com/user-attachments/assets/13601b82-0708-4e7f-884a-1ec0137c3d9f" />
 
 
 
@@ -430,7 +431,7 @@ margen (`Benefit / Total_Amount`) del resto?
 
 **Pregunta:** ¿El retraso depende del modo de envío, del mercado o de ambos?
 
-<img width="847" height="438" alt="WhatsApp Image 2026-10-14 at 12 57 20 PM" src="https://github.com/user-attachments/assets/ffd1ca0b-98c9-44f7-b613-4add96bbf174" />
+  <img width="847" height="438" alt="WhatsApp Image 2026-10-14 at 12 57 20 PM" src="https://github.com/user-attachments/assets/ffd1ca0b-98c9-44f7-b613-4add96bbf174" />
 
 
 
