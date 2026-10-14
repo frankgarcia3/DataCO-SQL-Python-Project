@@ -8,19 +8,6 @@ Python conectado a la base.
 **Herramientas:** SQL Server (T-SQL), Python (pandas, SQLAlchemy, pyodbc,
 matplotlib).
 
-## Resumen de hallazgos
-
-- Las ventas netas son estables (~10,6 M anuales en 2015 y 2016) y no hay
-  estacionalidad marcada ni por mes ni por día de la semana.
-- El descuento no explica el margen: el margen se mantiene entre 11,7 % y
-  13,0 % en todos los tramos de descuento (correlación de -0,0015).
-- El 57,3 % de los pedidos válidos llega tarde, y el retraso depende del modo
-  de envío, no del mercado.
-- Se detectó una anomalía de datos: las ventas de noviembre y diciembre de
-  2017 caen ~40 % y ~52 % frente a 2016, por lo que se excluyen del análisis
-  estacional.
-- Cerca del 18,7 % de los ítems tiene beneficio negativo, con una proporción
-  casi idéntica en todos los tramos de descuento.
 
 ## Arquitectura y Modelado de Datos (ETL)
 
@@ -28,6 +15,11 @@ Esquema estrella con una tabla de hechos a nivel de **ítem de pedido** y una
 dimensión de pedido para los atributos y medidas que pertenecen al pedido.
 
 <img width="904" height="838" alt="image" src="https://github.com/user-attachments/assets/81090e63-00cc-4368-b7ee-732541927f35" />
+
+
+
+
+
 
 
 
@@ -67,6 +59,8 @@ redondeo a 2 decimales fuera insignificante.
 crea y puebla las tablas del modelo (conversión de tipos, dimensiones y tabla
 de hechos), de modo que el proceso se pueda reproducir desde la tabla de
 staging.
+
+---
 
 ## Definiciones comunes a todas las consultas
 
@@ -151,9 +145,7 @@ frente a 895 mil), y enero de 2018 sigue bajo (285 mil). Hay ventas todos los
 días de esos meses y la causa no se puede determinar con los datos
 disponibles, por lo que no se interpreta como una caída real del negocio.
 
-
-
-
+---
 
 ### Consulta 2: Margen según el nivel de descuento
 
@@ -435,6 +427,8 @@ margen (`Benefit / Total_Amount`) del resto?
 
 
 
+
+
 **Hallazgos:**
 - El 18,7 % de los ítems tiene margen negativo, cifra que coincide con la
   consulta 4 de SQL (32 295 de 172 765 ítems), lo que sirve como validación
@@ -455,6 +449,7 @@ margen (`Benefit / Total_Amount`) del resto?
 
 
 
+
 **Hallazgos:**
 - La correlación entre descuento y margen es de -0,0015, prácticamente nula.
 - El margen promedio es plano (~0,12) en todos los niveles de descuento, de
@@ -462,11 +457,13 @@ margen (`Benefit / Total_Amount`) del resto?
 
 ---
 
-### Análisis 4: Retraso por modo de envío y mercado
+### Análisis 3: Retraso por modo de envío y mercado
 
 **Pregunta:** ¿El retraso depende del modo de envío, del mercado o de ambos?
 
 <img width="847" height="438" alt="WhatsApp Image 2026-10-14 at 12 57 20 PM" src="https://github.com/user-attachments/assets/ffd1ca0b-98c9-44f7-b613-4add96bbf174" />
+
+
 
 
 
@@ -480,8 +477,22 @@ margen (`Benefit / Total_Amount`) del resto?
 - Los resultados por modo coinciden con la consulta 5.
   
 ---
+## Resumen de hallazgos
+
+- Las ventas netas son estables (~10,6 M anuales en 2015 y 2016) y no hay
+  estacionalidad marcada ni por mes ni por día de la semana.
+- El descuento no explica el margen: el margen se mantiene entre 11,7 % y
+  13,0 % en todos los tramos de descuento (correlación de -0,0015).
+- El 57,3 % de los pedidos válidos llega tarde, y el retraso depende del modo
+  de envío, no del mercado.
+- Se detectó una anomalía de datos: las ventas de noviembre y diciembre de
+  2017 caen ~40 % y ~52 % frente a 2016, por lo que se excluyen del análisis
+  estacional.
+- Cerca del 18,7 % de los ítems tiene beneficio negativo, con una proporción
+  casi idéntica en todos los tramos de descuento.
+
+---
   
 
-Los datos originales no se incluyen por tamaño; el dataset se puede
-descargar desde Kaggle (DataCo Smart Supply Chain ).
+El dataset se puede descargar desde Kaggle (DataCo Smart Supply Chain ).
 
