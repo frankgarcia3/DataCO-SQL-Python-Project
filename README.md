@@ -134,17 +134,12 @@ GO
 
 
 **Hallazgos:**
-- Las ventas netas son estables: ~10,6 M anuales en 2015 y 2016 (-0,2 %),
-  con variaciones mensuales normales de entre -8 % y +6,5 %. <!-- VERIFICAR con consulta de totales anuales -->
-- De enero a octubre de 2017 las ventas crecen alrededor del 4,1 % frente al mismo
-  periodo de 2016.
-- Febrero es el mes más bajo de cada año, con 792 mil en 2015 y 834 mil en 2016.
-- El margen de beneficio varía entre el 10 % y el 14 %. El beneficio es más volátil que las
-  ventas, lo que indica que las variaciones no se deben únicamente a cuánto se vende, sino también a cuánto se gana por    cada venta.
+Entre 2015 y 2016, las ventas netas se mantuvieron bastante estables en torno a los 10,6 millones anuales (con apenas un leve ajuste del -0,2 %) y altibajos mensuales normales de entre el -8 % y el +6,5 %. La tendencia mejoró hacia 2017, registrando un crecimiento del 4,1 % entre enero y octubre en comparación con el mismo periodo del año anterior.
+
+Febrero suele ser el mes más flojo del año, registrando 792 mil en 2015 y 834 mil en 2016. Por su parte, el margen de beneficio se movió entre el 10 % y el 14 %. Cabe señalar que las ganancias resultaron ser más volátiles que las ventas, lo que demuestra que los resultados no dependen únicamente de cuánto se vende, sino también del margen que se le saca a cada operación.
 
 **Nota:** En noviembre y diciembre de 2017 las ventas
-caen 40 % y 52 % frente a los mismos meses de 2016 (538 mil y 432 mil
-frente a 895 mil), y enero de 2018 sigue bajo (285 mil). Hay ventas todos los
+caen 40 % y 52 % frente a los mismos meses de 2016, y enero de 2018 sigue bajo con 285 mil. Hay ventas todos los
 días de esos meses y la causa no se puede determinar con los datos
 disponibles, por lo que no se interpreta como una caída real del negocio.
 
@@ -202,10 +197,11 @@ GO
 
 
 **Hallazgos:**
-- El margen de beneficio se mantiene bastante estable, entre 11,72 % y 12,95 %. Además, el margen no disminuye de manera constante ya que en los descuentos mayores al 20 % vuelve a subir a 12,85 %, aunque este grupo representa solo el 4,63 % de las ventas.
-- El 93,8 % de las ventas se realiza con algún descuento y el 41 % con más
-  de 10 %.
-- Cerca del 18,7 % de los productos vendidos genera pérdidas. Lo curioso es que este porcentaje se mantiene casi igual en todos los niveles de descuento, incluso cuando no se aplica ninguno. Esto indica que los descuentos no parecen ser la causa principal de las pérdidas, por lo que sería necesario analizar otros factores.
+El margen de beneficio se mantiene bastante estable, entre el 11,72 % y el 12,95 %. Además, no disminuye de manera continua, ya que con descuentos superiores al 20 % vuelve a subir al 12,85 %, aunque este grupo solo representa el 4,63 % de las ventas.
+
+Por otro lado, la gran mayoría de las operaciones se realiza con alguna rebaja, ya que el 93,8 % de las ventas se realiza con algún descuento y el 41 % con más de 10 %.
+
+Asimismo, cerca del 18,7 % de los productos vendidos genera pérdidas. Lo curioso es que esta proporción se mantiene casi igual en todos los niveles de descuento, incluso cuando no se aplica ninguno. Esto indica que los descuentos no parecen ser la causa principal de las pérdidas, por lo que sería necesario analizar otros factores.
 
 
 
@@ -258,15 +254,13 @@ GO
 
 
 **Hallazgos:**
-- De 62 897 pedidos, 36 048 (57,3 %) llegan tarde.
-- First Class se retrasa en el 100 % de sus pedidos (siempre 1 día) y Second
-  Class en el 80 % (en promedio 2,5 días), frente al 39,85 % de Standard
-  Class.
-- Standard Class tiene la menor tasa, pero concentra el 41,6 % de los pedidos
-  retrasados por su volumen (59,8 % de los pedidos).
-- Los modos más rápidos tienen plazos programados muy cortos, por lo que una demora de un día ya cuenta como retraso.
+De un total de 62 897 pedidos, 36 048 llegan tarde, lo que representa el 57,3 % de las entregas.
 
-**Recomendación de negocio:** revisar los plazos prometidos de First y Second
+Al analizar los datos por tipo de envío, First Class se retrasa en el 100 % de los casos, siempre con un día de demora, mientras que Second Class lo hace en el 80 %, con un promedio de 2,5 días. En cambio, Standard Class registra la tasa más baja de incumplimiento con un 39,85 %.
+
+A pesar de su menor porcentaje de retrasos, Standard Class concentra el 41,6 % de todos los pedidos tardíos debido a su alto volumen, ya que abarca el 59,8 % del total de las operaciones. Esto se explica en parte porque las opciones más rápidas cuentan con plazos programados muy ajustados, por lo que un desfase de apenas un día computa inmediatamente como un retraso.
+
+**Recomendación de negocio:** Reconsiderar los plazos prometidos de First y Second
 Class, que no se cumplen de forma sistemática, antes de buscar causas en la
 operación logística.
 
@@ -353,13 +347,9 @@ GO
 
 
 **Hallazgos:**
-- No hay estacionalidad marcada ya que once de los doce meses se ubican entre 98,0
-  y 102,5.
-- Febrero con un indice estacional de 91,97 es el único mes claramente bajo, su menor número de días podría explicar gran parte de la diferencia.
-- Noviembre con 100,90 y diciembre con 102,10 no muestran efecto de temporada de
-  fin de año.
-- Por día de la semana, la diferencia entre el día más alto (sábado) y el
-  más bajo (miércoles) es de aproximadamente 3 %.
+- No se observa una estacionalidad marcada en los datos, ya que once de los doce meses del año se ubican en un rango muy estable entre 98,0 y 102,5. El único mes claramente bajo es febrero, que registra un índice de 91,97, aunque su menor cantidad de días podría explicar gran parte de esa diferencia.
+
+Por su parte, noviembre con 100,90 y diciembre con 102,10 tampoco reflejan un impacto significativo por la temporada de fin de año. Asimismo, las variaciones según el día de la semana son mínimas, pues la brecha entre el día más alto que es el sábado y el más bajo que es el miércoles alcanza tan solo un 3 % aproximadamente.
 
 **Nota:** En el año 2017, los meses de noviembre y diciembre caen 40 % y
 52 % aproximadamente frente a 2016 aunque todos los días tienen ventas. Con 2017 incluido,
@@ -391,10 +381,7 @@ margen (`Benefit / Total_Amount`) del resto?
 
 
 **Hallazgos:**
-- El 18,7 % de los ítems tiene margen negativo.
-- El 81,3 % de los ítems tiene margen positivo.
-- Los ítems con margen entre 0 y 20 % son el grupo más pequeño
-  (21,6 %), la distribución se concentra en los ítems con margen alto o en pérdida.
+- El 18,7 % de los ítems presenta un margen negativo, mientras que el 81,3 % restante genera ganancias. Curiosamente, los productos con un margen de entre el 0 % y el 20 % forman el grupo más pequeño con apenas un 21,6 %. Esto demuestra que la distribución se concentra principalmente en los extremos, es decir, en artículos con alta rentabilidad o directamente en aquellos que operan con pérdidas.
 
 ---
 
@@ -409,8 +396,7 @@ margen (`Benefit / Total_Amount`) del resto?
 
 
 **Hallazgos:**
-- La correlación entre descuento y margen es de -0,0015, prácticamente nula.
-- El margen promedio es plano (~0,12) en todos los niveles de descuento.
+La correlación entre descuento y margen es de -0,0015, prácticamente nula. Y el margen promedio es plano (~0,12) en todos los niveles de descuento.
 
 ---
 
@@ -425,11 +411,8 @@ margen (`Benefit / Total_Amount`) del resto?
 
 
 **Hallazgos:**
-- El retraso depende del modo de envío, no del mercado.
-- First Class se retrasa en el 100 % de los pedidos en los cinco mercados, Second Class en torno al 80 %, Standard Class en   torno al 40 %.
-- Same Day presenta el mayor rango entre mercados (46 % a 51 %), pero con
-  celdas más pequeñas esa diferencia puede ser ruido.
-- Los resultados por modo coinciden con la consulta 5.
+El porcentaje de retrasos depende directamente del modo de envío y no del mercado. En los cinco mercados analizados, First Class se retrasa en el 100 % de los pedidos, Second Class se mantiene en torno al 80 % y Standard Class se ubica cerca del 40 %.
+Por su parte, la modalidad Same Day muestra la mayor variación entre regiones, oscilando entre el 46 % y el 51 %, aunque al tratarse de un volumen de datos más reducido esta brecha podría responder a simple ruido estadístico.
   
 ---
 ## Resumen de hallazgos
