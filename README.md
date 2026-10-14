@@ -26,7 +26,8 @@ matplotlib).
 
 Esquema estrella con una tabla de hechos a nivel de **ítem de pedido** y una
 dimensión de pedido para los atributos y medidas que pertenecen al pedido.
-![alt text](image-1.png)
+<img width="904" height="838" alt="image" src="https://github.com/user-attachments/assets/81090e63-00cc-4368-b7ee-732541927f35" />
+
 
 
 | Tabla | Grano | Contenido |
