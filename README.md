@@ -26,6 +26,7 @@ matplotlib).
 
 Esquema estrella con una tabla de hechos a nivel de **ítem de pedido** y una
 dimensión de pedido para los atributos y medidas que pertenecen al pedido.
+
 <img width="904" height="838" alt="image" src="https://github.com/user-attachments/assets/81090e63-00cc-4368-b7ee-732541927f35" />
 
 
@@ -448,7 +449,8 @@ igual que el conteo de ítems válidos de la consulta 4. <!-- VERIFICAR con len(
 **Pregunta:** ¿Qué porcentaje de ítems tiene pérdida y cómo se reparte el
 margen (`Benefit / Total_Amount`) del resto?
 
-![distribucion_margen](imagenes/py_distribucion_margen.png)
+<img width="888" height="484" alt="image" src="https://github.com/user-attachments/assets/c1d49067-dbb0-4171-a498-d25d60b94ac8" />
+
 
 **Hallazgos:**
 - El 18,7 % de los ítems tiene margen negativo, cifra que coincide con la
@@ -457,17 +459,14 @@ margen (`Benefit / Total_Amount`) del resto?
 - El 81,3 % de los ítems tiene margen positivo, y el 43 % supera el 30 %
   (22,1 % entre 30 y 40 %, y 20,9 % por encima de 40 %). <!-- VERIFICAR sumas -->
 - Los ítems con margen bajo (entre 0 y 20 %) son el grupo más pequeño
-  (21,6 %): la distribución se concentra en margen alto o en pérdida.
-
-**Limitación:** el gráfico agrupa el margen en rangos fijos de 10 puntos; no
-muestra la magnitud de las pérdidas. Describe la distribución, pero no
-explica por qué ocurre.
+  (21,6 %): la distribución se concentra en margen alto o en pérdida.  
 
 ### Análisis 2: Descuento vs. margen
 
 **Pregunta:** ¿Se relaciona el nivel de descuento con el margen del ítem?
 
-![descuento_vs_margen](imagenes/py_descuento_vs_margen.png)
+<img width="884" height="483" alt="WhatsApp Image 2026-10-14 at 12 58 27 PM" src="https://github.com/user-attachments/assets/13601b82-0708-4e7f-884a-1ec0137c3d9f" />
+
 
 **Hallazgos:**
 - La correlación entre descuento y margen es de -0,0015, prácticamente nula.
@@ -477,25 +476,12 @@ explica por qué ocurre.
 **Limitación:** el gráfico usa una muestra aleatoria de 5 000 ítems para los
 puntos; la línea de margen promedio usa todos los datos.
 
-### Análisis 3: Ventas mensuales y anomalía de 2017
-
-![ventas_mensuales](imagenes/py_ventas_mensuales.png)
-
-**Hallazgos:**
-- Las ventas netas se mantienen estables, alrededor de 0,9 M al mes, entre
-  enero de 2015 y octubre de 2017.
-- En noviembre y diciembre de 2017 caen de forma brusca pese a tener ventas
-  todos los días; en 2015 y 2016 no hay caída equivalente, por lo que no se
-  interpreta como estacionalidad.
-
-**Limitación:** la causa de la caída no se puede determinar con los datos
-disponibles. Se omite enero de 2018 del gráfico.
 
 ### Análisis 4: Retraso por modo de envío y mercado
 
 **Pregunta:** ¿El retraso depende del modo de envío, del mercado o de ambos?
 
-![retraso_modo_mercado](imagenes/py_retraso_modo_mercado.png)
+<img width="847" height="438" alt="WhatsApp Image 2026-10-14 at 12 57 20 PM" src="https://github.com/user-attachments/assets/ffd1ca0b-98c9-44f7-b613-4add96bbf174" />
 
 **Hallazgos:**
 - El retraso depende del modo de envío, no del mercado: dentro de cada modo,
@@ -525,8 +511,3 @@ README.md
 Los datos originales no se incluyen por tamaño; el dataset se puede
 descargar desde Kaggle (*DataCo Smart Supply Chain for Big Data Analysis*).
 
-## Próximos pasos
-
-- Consultas adicionales: mercados y regiones, departamentos y categorías,
-  clientes y productos más rentables.
-- Conexión del modelo a Power BI mediante vistas.
