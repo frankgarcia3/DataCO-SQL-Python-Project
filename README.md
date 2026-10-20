@@ -32,7 +32,7 @@ dimensión de pedido para los atributos y medidas que pertenecen al pedido.
 | `DimDate` | año, mes, nombre del mes, día, nombre del día |
 
 
-### Carga y tipos de datos
+## Carga y tipos de datos
 
 Al importar el CSV con los campos numéricos como `float`, SQL Server no
 interpretó correctamente el punto decimal. Para resolverlo, volví a importar
