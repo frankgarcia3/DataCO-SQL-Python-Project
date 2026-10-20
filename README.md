@@ -14,7 +14,7 @@ Esquema estrella con una tabla de hechos a nivel de ítem de pedido y una
 dimensión de pedido para los atributos y medidas que pertenecen al pedido.
 
 <img width="904" height="838" alt="image" src="https://github.com/user-attachments/assets/81090e63-00cc-4368-b7ee-732541927f35" />
-
+<br><br>
 
 
 
@@ -407,23 +407,6 @@ La correlación entre descuento y margen es de -0,0015, prácticamente nula. Y e
 
 El porcentaje de retrasos depende directamente del modo de envío y no del mercado. En los cinco mercados analizados, First Class se retrasa en el 100 % de los pedidos, Second Class se mantiene en torno al 80 % y Standard Class se ubica cerca del 40 %.
 Por su parte, la modalidad Same Day muestra la mayor variación entre regiones, oscilando entre el 46 % y el 51 %, aunque al tratarse de un volumen de datos más reducido esta brecha podría responder a simple ruido estadístico.
-  
----
-## Resumen de hallazgos
-
-- Las ventas netas son estables y no hay
-  estacionalidad marcada ni por mes ni por día de la semana.
-- El descuento no explica el margen: el margen se mantiene entre 11,7 % y
-  13,0 % en todos los tramos de descuento (correlación de -0,0015).
-- El 57,3 % de los pedidos válidos llega tarde, y el retraso depende del modo
-  de envío, no del mercado.
-- Se detectó una anomalía, las ventas de noviembre y diciembre de
-  2017 caen ~40 % y ~52 % frente a 2016, por lo que se excluyen del análisis
-  estacional.
-- Cerca del 18,7 % de los ítems tiene beneficio negativo, con una proporción
-  casi idéntica en todos los tramos de descuento.
-
----
   
 
 El dataset se puede descargar desde Kaggle (DataCo Smart Supply Chain )
