@@ -381,6 +381,6 @@ La correlación entre descuento y margen es de -0,0015, prácticamente nula. Y e
 El porcentaje de retrasos depende directamente del modo de envío y no del mercado. En los cinco mercados analizados, First Class se retrasa en el 100 % de los pedidos, Second Class se mantiene en torno al 80 % y Standard Class se ubica cerca del 40 %.
 Por su parte, la modalidad Same Day muestra la mayor variación entre regiones, oscilando entre el 46 % y el 51 %, aunque al tratarse de un volumen de datos más reducido esta brecha podría responder a simple ruido estadístico.
   
-
+<br><br>
 El dataset se puede descargar desde Kaggle (DataCo Smart Supply Chain )
 
