@@ -66,13 +66,10 @@ staging.
 
 ## Definiciones
 
-**Ingresos** = `Total_Amount` (neto de descuento). `Sales` es el monto
-  bruto y solo se usa para medir descuentos.
+**Ingresos** = `Total_Amount` (neto de descuento). `Sales` es el monto bruto y solo se usa para medir descuentos.
 **Margen** = `SUM(Benefit) / SUM(Total_Amount)`
-**Pedidos válidos:** Se excluyen los estados `CANCELED` y
-  `SUSPECTED_FRAUD`. Quedan 172 765 ítems y 62 897 pedidos.
-**Unidad de análisis de entregas:** El pedido, no el ítem. Las medidas de
-  envío se repiten en cada ítem.
+**Pedidos válidos:** Se excluyen los estados `CANCELED` y `SUSPECTED_FRAUD`. Quedan 172 765 ítems y 62 897 pedidos.
+**Unidad de análisis de entregas:** El pedido, no el ítem. Las medidas de envío se repiten en cada ítem.
 
 ## Consultas SQL
 
@@ -207,7 +204,7 @@ Asimismo, cerca del 18,7 % de los productos vendidos genera pérdidas. Lo curios
 
 ### Consulta 3: Retrasos por modo de envío
 
-**Pregunta:** ¿Qué modo de envío tiene más retrasos y de cuántos días?
+¿Qué modo de envío tiene más retrasos y de cuántos días?
 
 Se entiende como retraso = días reales > días programados.
 
