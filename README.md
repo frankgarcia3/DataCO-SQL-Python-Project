@@ -9,7 +9,7 @@ matplotlib) conectado a la base de datos DataCO.
 
 ## Arquitectura y Modelado de Datos (ETL)
 
-Esquema estrella compuesto por una sola tabla de hechos y seis dimensiones que permiten analizar la información desde distintas perspectivas. La granularidad se definió a nivel de ítem de pedido, donde cada registro representa un producto asociado a un mismo pedido o a pedidos distintos.
+Esquema estrella compuesto por una sola tabla de hechos y seis dimensiones que permiten analizar la información desde distintas perspectivas. La granularidad se definió a nivel de ítem de pedido, donde cada registro representa un producto asociado a un pedido.
 
 <img width="904" height="838" alt="image" src="https://github.com/user-attachments/assets/81090e63-00cc-4368-b7ee-732541927f35" />
 <br><br>
