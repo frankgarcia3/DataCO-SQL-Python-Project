@@ -342,17 +342,14 @@ estacionales.
 
 ---
 
-## Análisis en Python (post-SQL)
+## Análisis en Python 
 
 Conecté Python (pandas, SQLAlchemy, pyodbc) a la base de datos DataCO en SQL
 Server. Cada análisis usa los mismos filtros que las consultas SQL para que
-las cifras sean comparables. Notebook: [`graphics.ipynb`](graphics.ipynb).
+las cifras sean comparables. Las gráficas se encuentran en el Notebook: [`graphics.ipynb`](graphics.ipynb).
 
 
 ### Análisis 1: Distribución de ítems por rango de margen
-
-**Pregunta:** ¿Qué porcentaje de ítems tiene pérdida y cómo se reparte el
-margen (`Benefit / Total_Amount`) del resto?
 
   <img width="888" height="484" alt="image" src="https://github.com/user-attachments/assets/c1d49067-dbb0-4171-a498-d25d60b94ac8" />
 <br><br>
@@ -366,7 +363,6 @@ El 18,7 % de los ítems presenta un margen negativo, mientras que el 81,3 % rest
 
 ### Análisis 2: Descuento vs. margen
 
-**Pregunta:** ¿Se relaciona el nivel de descuento con el margen del ítem?
 
   <img width="884" height="483" alt="WhatsApp Image 2026-10-14 at 12 58 27 PM" src="https://github.com/user-attachments/assets/13601b82-0708-4e7f-884a-1ec0137c3d9f" />
 <br><br>
@@ -381,7 +377,6 @@ La correlación entre descuento y margen es de -0,0015, prácticamente nula. Y e
 
 ### Análisis 3: Retraso por modo de envío y mercado
 
-**Pregunta:** ¿El retraso depende del modo de envío, del mercado o de ambos?
 
   <img width="847" height="438" alt="WhatsApp Image 2026-10-14 at 12 57 20 PM" src="https://github.com/user-attachments/assets/ffd1ca0b-98c9-44f7-b613-4add96bbf174" />
 <br><br>
