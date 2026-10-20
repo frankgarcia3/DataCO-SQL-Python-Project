@@ -128,6 +128,7 @@ FROM Anterior
 ORDER BY Año, Mes
 GO
 ```
+
 **Resultado:**
 
   <img width="1455" height="659" alt="WhatsApp Image 2026-10-14 at 1 36 24 PM" src="https://github.com/user-attachments/assets/3b8af27a-3c2f-4bb8-8763-f6506bd94244" />
