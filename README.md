@@ -138,10 +138,7 @@ disponibles, por lo que no se interpreta como una caída real del negocio.
 
 ---
 
-### Consulta 2: Margen según el nivel de descuento
-
-**Pregunta:** ¿Cómo cambia el margen a medida que aumenta el descuento
-aplicado a cada ítem?
+### Consulta 2: ¿Cómo cambia el margen a medida que aumenta el descuento aplicado a cada ítem?
 
 ```sql
 USE DataCO
@@ -199,9 +196,7 @@ Asimismo, cerca del 18,7 % de los productos vendidos genera pérdidas. Lo curios
 
 ---
 
-### Consulta 3: Retrasos por modo de envío
-
-¿Qué modo de envío tiene más retrasos y de cuántos días?
+### Consulta 3: ¿Qué modo de envío tiene más retrasos y de cuántos días?
 
 Se entiende como retraso = días reales > días programados.
 
@@ -256,10 +251,7 @@ operación logística.
 
 ---
 
-### Consulta 4: Estacionalidad (mes del año y día de la semana)
-
-**Pregunta:** ¿Hay estacionalidad en las ventas por mes del año o por día de
-la semana?
+### Consulta 4: ¿Hay estacionalidad en las ventas por mes del año o por día de la semana?
 
 En el análisis sobre **2015 y 2016** (años completos). Se
 excluye 2017 por la anomalía de noviembre-diciembre. El índice estacional
