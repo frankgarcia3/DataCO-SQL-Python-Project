@@ -24,13 +24,13 @@ dimensión de pedido para los atributos y medidas que pertenecen al pedido.
 
 
 
-| Tabla | Grano | Contenido |
-|---|---|---|
-| `FactSales` | 1 fila por ítem de pedido | ventas, descuento, beneficio, cantidades, días de envío y claves a las dimensiones |
-| `DimOrder` | 1 fila por pedido | estado, tipo de transacción, mercado y ubicación del pedido |
-| `DimCustomer`, `DimProduct`, `DimCategory`, `DimDepartment` | 1 fila por entidad | atributos descriptivos |
-| `DimShipping` | 1 fila por combinación | modo de envío y estado de entrega |
-| `DimDate` | 1 fila por día | año, mes, nombre del mes, día, nombre del día |
+| Tabla | Contenido |
+|---|---|
+| `FactSales` | ventas, descuento, beneficio, cantidades, días de envío y claves a las dimensiones |
+| `DimOrder` | estado, tipo de transacción, mercado y ubicación del pedido |
+| `DimCustomer`, `DimProduct`, `DimCategory`, `DimDepartment` | atributos descriptivos |
+| `DimShipping` | modo de envío y estado de entrega |
+| `DimDate` | año, mes, nombre del mes, día, nombre del día |
 
 
 ### Carga y tipos de datos
