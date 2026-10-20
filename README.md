@@ -1,10 +1,9 @@
 # Análisis de cadena de suministro DataCo: SQL Server + Python
 
-Proyecto de análisis de datos sobre el dataset *DataCo Smart Supply Chain*
-(pedidos, envíos, clientes y productos). Incluye modelado dimensional en
+Proyecto de análisis de datos sobre el dataset DataCo Smart Supply Chain, en este proyecto se incluye el modelado dimensional en
 SQL Server, consultas de negocio en T-SQL y un análisis complementario en
 Python (pandas, SQLAlchemy, pyodbc,
-matplotlib) conectado a la base.
+matplotlib) conectado a la base de datos DataCO.
 
 
 
