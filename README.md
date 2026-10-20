@@ -131,7 +131,7 @@ GO
 **Resultado:**
 
   <img width="1455" height="659" alt="WhatsApp Image 2026-10-14 at 1 36 24 PM" src="https://github.com/user-attachments/assets/3b8af27a-3c2f-4bb8-8763-f6506bd94244" />
-
+<br><br>
 
 Entre 2015 y 2016, las ventas netas se mantuvieron bastante estables en torno a los 10,6 millones anuales (con apenas un leve ajuste del -0,2 %) y altibajos mensuales normales de entre el -8 % y el +6,5 %. La tendencia mejoró hacia 2017, registrando un crecimiento del 4,1 % entre enero y octubre en comparación con el mismo periodo del año anterior.
 
