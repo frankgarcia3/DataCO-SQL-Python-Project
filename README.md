@@ -36,8 +36,8 @@ dimensión de pedido para los atributos y medidas que pertenecen al pedido.
 
 Al importar el CSV con los campos numéricos como `float`, SQL Server no
 interpretó correctamente el punto decimal. Para resolverlo, volví a importar
-el archivo con **todos los campos numéricos como `VARCHAR(50)`**, de modo que
-el valor llegara intacto a la tabla staging y después convertirlos a tipo de dato `DECIMAL()`** con `ALTER COLUMN`:
+el archivo con todos los campos numéricos como `VARCHAR(50)`, de modo que
+el valor llegara intacto a la tabla staging y después convertirlos a tipo de dato `DECIMAL()` usando `ALTER COLUMN`:
 
 ```sql
 USE DataCO
