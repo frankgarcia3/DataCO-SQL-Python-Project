@@ -57,7 +57,7 @@ ALTER TABLE DataCoSupplyChainDataset2 ALTER COLUMN Longitude                DECI
 ```
 
 
-Antes de convertir, validé con TRY_CAST que no hubiera valores no convertibles, cadenas vacías (que se convertirían en 0 en lugar de NULL) ni desbordamientos de rango, y comprobé que la diferencia entre cada valor y su redondeo a 2 decimales fuera insignificante.
+Antes de convertir, validé con `TRY_CAST` que no hubiera valores no convertibles, cadenas vacías (que se convertirían en 0 en lugar de NULL) ni desbordamientos de rango, y comprobé que la diferencia entre cada valor y su redondeo a 2 decimales fuera insignificante.
 El archivo
 [`db_setup.sql`](scripts/00_creacion_y_carga_tablas.sql)
 crea y puebla las tablas del modelo, de modo que el proceso se pueda reproducir desde la tabla de
@@ -66,12 +66,12 @@ staging.
 
 ## Definiciones
 
-- **Ingresos** = `Total_Amount` (neto de descuento). `Sales` es el monto
+**Ingresos** = `Total_Amount` (neto de descuento). `Sales` es el monto
   bruto y solo se usa para medir descuentos.
-- **Margen** = `SUM(Benefit) / SUM(Total_Amount)`
-- **Pedidos válidos:** Se excluyen los estados `CANCELED` y
+**Margen** = `SUM(Benefit) / SUM(Total_Amount)`
+**Pedidos válidos:** Se excluyen los estados `CANCELED` y
   `SUSPECTED_FRAUD`. Quedan 172 765 ítems y 62 897 pedidos.
-- **Unidad de análisis de entregas:** El pedido, no el ítem. Las medidas de
+**Unidad de análisis de entregas:** El pedido, no el ítem. Las medidas de
   envío se repiten en cada ítem.
 
 ## Consultas SQL
