@@ -66,17 +66,14 @@ staging.
 
 ## Definiciones
 
-**Ingresos** = `Total_Amount` (neto de descuento). `Sales` es el monto bruto y solo se usa para medir descuentos.
-**Margen** = `SUM(Benefit) / SUM(Total_Amount)`
-**Pedidos válidos:** Se excluyen los estados `CANCELED` y `SUSPECTED_FRAUD`. Quedan 172 765 ítems y 62 897 pedidos.
-**Unidad de análisis de entregas:** El pedido, no el ítem. Las medidas de envío se repiten en cada ítem.
+- **Ingresos** = `Total_Amount` (neto de descuento). `Sales` es el monto bruto y solo se usa para medir descuentos.
+- **Margen** = `SUM(Benefit) / SUM(Total_Amount)`
+- **Pedidos válidos:** Se excluyen los estados `CANCELED` y `SUSPECTED_FRAUD`. Quedan 172 765 ítems y 62 897 pedidos.
+- **Unidad de análisis de entregas:** El pedido, no el ítem. Las medidas de envío se repiten en cada ítem.
 
 ## Consultas SQL
 
-### Consulta 1: Evolución mensual de ventas y beneficio
-
-**Pregunta:** ¿Cómo evolucionan las ventas y el beneficio mes a mes y cuánto
-varían respecto al mes anterior?
+### Consulta 1: ¿Cómo evolucionan las ventas y el beneficio mes a mes y cuántovarían respecto al mes anterior?
 
 ```sql
 USE DataCO
